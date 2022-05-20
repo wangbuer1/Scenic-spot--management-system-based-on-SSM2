@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	<!-- 验证码 -->
+	<bean id="captchaProducer"
+		class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg>
+					<props>
+						<!-- 这里的颜色只支持标准色和rgb颜色，不可使用十六进制的颜色 -->
+						<!-- 是否有边框 -->
+						<prop key="kaptcha.border">no</prop>
+						<!-- 验证码文本字符颜色 -->
+						<prop key="kaptcha.textproducer.font.color">black</prop>
+						<!-- 验证码图片宽度 -->
+						<prop key="kaptcha.image.width">240</prop>
+						<!-- 验证码图片高度 -->
+						<prop key="kaptcha.image.height">80</prop>
+						<!-- 验证码文本字符大小 -->
+						<prop key="kaptcha.textproducer.font.size">48</prop>
+						<!-- kaptcha.textproducer.char.string   验证码文本字符内容范围 -->
+						<prop key="kaptcha.textproducer.char.string">23456789ABEXJWHTMKF</prop>
+						<!-- session中存放验证码的key键 -->
+						<prop key="kaptcha.session.key">_captcha</prop>
+						<!-- 验证码噪点颜色 -->
+						<prop key="kaptcha.noise.color">white</prop>
+						<!-- 验证码文本字符间距 -->
+						<prop key="kaptcha.textproducer.char.space">16</prop>
+						<!-- 验证码样式引擎 -->
+						<prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.ShadowGimpy</prop>
+						<!-- 验证码文本字符长度 -->
+						<prop key="kaptcha.textproducer.char.length">4</prop>
+						<!-- 验证码文本字体样式 默认为new Font("Arial", 1, fontSize), new Font("Courier", 
+							1, fontSize) -->
+						<prop key="kaptcha.textproducer.font.names">宋体,楷体,微软雅黑</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+</beans>
